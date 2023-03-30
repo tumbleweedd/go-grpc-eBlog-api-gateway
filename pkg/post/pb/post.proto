@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package order;
+package post;
 
-option go_package = "pkg/pb";
+option go_package = "pkg/post/pb";
 
 service PostService {
   rpc GetAllPosts(GetAllPostsRequest) returns (GetAllPostsResponse) {}

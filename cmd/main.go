@@ -5,6 +5,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	"github.com/tumbleweedd/grpc-eBlog/grpc-eBlog-api-gateway/pkg/auth"
+	"github.com/tumbleweedd/grpc-eBlog/grpc-eBlog-api-gateway/pkg/comment"
 	"github.com/tumbleweedd/grpc-eBlog/grpc-eBlog-api-gateway/pkg/post"
 	"github.com/tumbleweedd/grpc-eBlog/grpc-eBlog-api-gateway/pkg/user"
 )
@@ -19,6 +20,7 @@ func main() {
 	authService := *auth.RegisterRoutes(r, viper.GetString("AUTH_SVC_URL"))
 	user.RegisterRoutes(r, viper.GetString("USER_SVC_URL"), &authService)
 	post.RegisterRouts(r, viper.GetString("POST_SVC_URL"), &authService)
+	comment.RegisterRoutes(r, viper.GetString("COMMENT_SVC_URL"), &authService)
 
 	r.Run(viper.GetString("PORT"))
 }

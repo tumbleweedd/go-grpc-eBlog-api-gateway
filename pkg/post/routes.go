@@ -40,5 +40,5 @@ func (svc *ServiceClient) updatePostById(ctx *gin.Context) {
 
 }
 func (svc *ServiceClient) deletePostById(ctx *gin.Context) {
-
+	routes.DeletePostById(ctx, svc.Client)
 }

@@ -13,6 +13,6 @@ func GetAllPosts(ctx *gin.Context, c pb.PostServiceClient) {
 		ctx.AbortWithError(http.StatusBadGateway, err)
 		return
 	}
-	
+
 	ctx.JSON(int(res.Status), &res)
 }
