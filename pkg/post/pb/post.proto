@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package post;
+package order;
 
-option go_package = "pkg/post/pb";
+option go_package = "pkg/pb";
 
 service PostService {
   rpc GetAllPosts(GetAllPostsRequest) returns (GetAllPostsResponse) {}
@@ -11,6 +11,10 @@ service PostService {
   rpc CreateNewPost(CreateNewPostRequest) returns (CreateNewPostResponse) {}
   rpc UpdatePost(UpdatePostRequest) returns (UpdatePostResponse) {}
   rpc DeletePost(DeletePostRequest) returns (DeletePostResponse) {}
+}
+
+message Comments {
+  repeated string body = 1;
 }
 
 //GetAllPosts
@@ -22,6 +26,7 @@ message PostData{
   string head = 2;
   string category = 3;
   repeated string tags = 4;
+  map<string, Comments> comments = 5;
 }
 
 message GetAllPostsResponse {
